@@ -1,0 +1,17 @@
+# .gitignore
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environment folders
+venv/
+
+env/
+
+# Ignore test coverage files
+.coverage
+*.coverage
+
+# Ignore any sensitive files (if applicable)

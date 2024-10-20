@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule Engine</title>
+    <style>
+        /* Global styling for fonts, colors, and layout */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #0077cc;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        /* Container styling to center and add padding */
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Styling for input fields */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Styling for buttons */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        /* Adding some spacing to text and layout */
+        .form-section {
+            margin-bottom: 40px;
+        }
+    </style>
+    <script>
+        async function createRule() {
+            const ruleName = document.getElementById('rule_name').value;
+            const ruleString = document.getElementById('rule_string').value;
+
+            const response = await fetch('/create_rule', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ rule_name: ruleName, rule_string: ruleString })
+            });
+
+            const result = await response.json();
+            alert(result.message);
+        }
+
+        async function evaluateRule() {
+            const ruleName = document.getElementById('rule_name_eval').value;
+            const userData = {
+                age: document.getElementById('age').value,
+                department: document.getElementById('department').value,
+                salary: document.getElementById('salary').value
+            };
+
+            const response = await fetch('/evaluate_rule', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ rule_name: ruleName, user_data: userData })
+            });
+
+            const result = await response.json();
+            alert('Rule evaluation result: ' + result.result);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Rule Engine</h1>
+
+        <div class="form-section">
+            <h2>Create Rule</h2>
+            <input id="rule_name" placeholder="Rule Name" />
+            <input id="rule_string" placeholder="Rule String" />
+            <button onclick="createRule()">Create Rule</button>
+        </div>
+
+        <div class="form-section">
+            <h2>Evaluate Rule</h2>
+            <input id="rule_name_eval" placeholder="Rule Name" />
+            <input id="age" placeholder="Age" />
+            <input id="department" placeholder="Department" />
+            <input id="salary" placeholder="Salary" />
+            <button onclick="evaluateRule()">Evaluate Rule</button>
+        </div>
+    </div>
+</body>
+</html>
