@@ -1,6 +1,6 @@
 # Rule Engine with AST
 
-# Description
+## Description
 
 This project implements a simple 3-tier rule engine application that uses an Abstract Syntax Tree (AST) to represent, combine, and evaluate user-defined rules based on attributes like age, department, salary, and more. The project includes:
 
@@ -10,7 +10,7 @@ A Backend: An AST-based rule engine for processing and evaluating user rules.
 A Data Layer: SQLite database for storing rules and metadata.
 The system is designed to allow dynamic creation, modification, and combination of rules. It also supports user-defined functions for more complex rule logic.
 
-# Features
+## Features
 
 Dynamic Rule Creation: Allows users to create, combine, and modify rules.
 User-Defined Functions: Supports advanced rule logic through custom functions.
@@ -19,7 +19,7 @@ REST API: Provides endpoints for creating, combining, and evaluating rules via A
 Data Persistence: Stores rules and metadata in an SQLite database.
 Frontend UI: A simple HTML form for rule creation and evaluation.
 
-# Project Structure
+## Project Structure
 
 rule_engine_ast/
 │
@@ -43,7 +43,7 @@ rule_engine_ast/
 ├── .gitignore                # Git ignore file
 └── main.py                   # Entry point to run the server
 
-# Requirements
+## Requirements
 
 The application runs in a Python environment. The dependencies are listed in the requirements.txt file and can be installed using pip.
 
@@ -53,25 +53,25 @@ SQLite (for database storage)
 
 ## Running the Application
 
-Clone the Repository:
+### Clone the Repository:
 
 git clone https://github.com/your-username/rule-engine-ast.git
 cd rule-engine-ast
 
-Set Up Virtual Environment:
+### Set Up Virtual Environment:
 
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
 
-Install Dependencies:
+### Install Dependencies:
 
 pip install -r requirements.txt
 
-Initialize the Database:
+### Initialize the Database:
 
 python -c "from engine.db import create_rule_table; create_rule_table()"
 
-Run the Application:
+### Run the Application:
 
 python api/app.py
