@@ -53,25 +53,26 @@ SQLite (for database storage)
 
 ## Running the Application
 
-### Clone the Repository:
+## Clone the Repository:
 
 git clone https://github.com/your-username/rule-engine-ast.git
 cd rule-engine-ast
 
-### Set Up Virtual Environment:
+## Set Up Virtual Environment:
 
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
+
 venv\Scripts\activate     # Windows
 
-### Install Dependencies:
+## Install Dependencies:
 
 pip install -r requirements.txt
 
-### Initialize the Database:
+## Initialize the Database:
 
 python -c "from engine.db import create_rule_table; create_rule_table()"
 
-### Run the Application:
+## Run the Application:
 
 python api/app.py
